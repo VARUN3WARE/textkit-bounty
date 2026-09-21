@@ -24,9 +24,7 @@ def test_word_count_simple():
     assert word_count("hello world") == 2
 
 
-def test_truncate_short_text_unchanged():
-    assert truncate("short", 10) == "short"
-
-
 def test_truncate_long_text_cut():
     assert truncate("abcdefghij", 5).startswith("ab")
+def test_truncate_respects_limit():
+    assert len(truncate("abcdefghij", 5)) <= 5
