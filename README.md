@@ -40,7 +40,7 @@ from textkit import chunk, parse_duration, slugify
 
 chunk([1, 2, 3, 4], 2)          # [[1, 2], [3, 4]]
 slugify("hello")                # "hello"
-parse_duration("1h30m")         # 3600
+parse_duration("1h30m")         # 5400
 ```
 
 Some of this doesn't work yet; that's what the bounty issues are for.
