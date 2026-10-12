@@ -2,7 +2,7 @@
 
 import re
 
-_UNITS = {"h": 3600, "m": 60}
+_UNITS = {"h": 3600, "m": 60, "s": 1}
 
 
 def chunk(items, size):
