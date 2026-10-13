@@ -30,3 +30,5 @@ def test_truncate_short_text_unchanged():
 
 def test_truncate_long_text_cut():
     assert truncate("abcdefghij", 5).startswith("ab")
+def test_word_count_robust():
+    assert word_count("hello  world") == 2
