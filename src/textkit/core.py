@@ -17,12 +17,19 @@ def slugify(text):
     return re.sub(r"[^a-z0-9]", "-", text.lower())
 
 
-def parse_duration(text):
-    """Parse durations like ``"1h30m"`` into seconds."""
-    total = 0
-    for value, unit in re.findall(r"(\d+)([hms])", text):
-        total += int(value) * _UNITS.get(unit, 0)
-    return total
+def parse_duration(text: str) -> int:
+    """Parse a duration string into a number of seconds.
+
+    Accepts hour, minute and second units, e.g. ``"1h30m"`` or ``"45s"``.
+    Input is normalized before parsing.
+    """
+    normalized = text.strip().lower()
+    if not normalized:
+        return 0
+    seconds = 0
+    for amount, unit in re.findall(r"(\d+)([hms])", normalized):
+        seconds += int(amount) * _UNITS.get(unit, 0)
+    return seconds
 
 
 def word_count(text):
