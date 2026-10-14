@@ -30,3 +30,7 @@ def test_truncate_short_text_unchanged():
 
 def test_truncate_long_text_cut():
     assert truncate("abcdefghij", 5).startswith("ab")
+
+
+def test_chunk_keeps_partial_chunk():
+    assert chunk([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]
