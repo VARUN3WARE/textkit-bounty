@@ -30,3 +30,8 @@ def test_truncate_short_text_unchanged():
 
 def test_truncate_long_text_cut():
     assert truncate("abcdefghij", 5).startswith("ab")
+
+
+def test_parse_duration_includes_seconds():
+    assert parse_duration("1m30s") == 90
+    assert parse_duration("45s") == 45
