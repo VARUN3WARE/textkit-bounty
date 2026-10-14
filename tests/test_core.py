@@ -30,3 +30,9 @@ def test_truncate_short_text_unchanged():
 
 def test_truncate_long_text_cut():
     assert truncate("abcdefghij", 5).startswith("ab")
+
+
+def test_truncate_respects_limit_with_ellipsis():
+    assert truncate("abcdefghij", 5) == "ab..."
+    assert len(truncate("abcdefghij", 5)) == 5
+    assert truncate("ab", 5) == "ab"
