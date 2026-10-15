@@ -5,12 +5,15 @@ import re
 _UNITS = {"h": 3600, "m": 60}
 
 
-def chunk(items, size):
-    """Split ``items`` into lists of length ``size``."""
-    if size <= 0:
-        raise ValueError("size must be positive")
-    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]
+def chunk(lst: list, size: int) -> list:
+    """
+    Разбивает список lst на подсписки указанного размера size.
+    Последний неполный фрагмент сохраняется.
+    """
+    if not isinstance(lst, list) or size <= 0:
+        return []
 
+    return [lst[i:i + size] for i in range(0, len(lst), size)]
 
 def slugify(text):
     """Turn ``text`` into a URL slug."""
