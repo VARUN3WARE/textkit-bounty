@@ -14,7 +14,10 @@ def chunk(items, size):
 
 def slugify(text):
     """Turn ``text`` into a URL slug."""
-    return re.sub(r"[^a-z0-9]", "-", text.lower())
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+    slug = re.sub(r"[^a-z0-9]+", "-", text.lower())
+    return slug.strip("-")
 
 
 def parse_duration(text):

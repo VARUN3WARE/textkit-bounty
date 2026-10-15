@@ -16,6 +16,10 @@ def test_slugify_simple():
     assert slugify("hello") == "hello"
 
 
+def test_slugify_complex():
+    assert slugify("Hello, World!") == "hello-world"
+
+
 def test_parse_duration_hours_minutes():
     assert parse_duration("1h30m") == 5400
 
