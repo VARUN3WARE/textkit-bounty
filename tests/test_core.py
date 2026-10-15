@@ -30,3 +30,29 @@ def test_truncate_short_text_unchanged():
 
 def test_truncate_long_text_cut():
     assert truncate("abcdefghij", 5).startswith("ab")
+
+
+def test_chunk_trailing_partial():
+    assert chunk([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]
+
+
+def test_slugify_collapses_and_trims():
+    assert slugify("Hello, World!") == "hello-world"
+
+
+def test_parse_duration_seconds():
+    assert parse_duration("1m30s") == 90
+    assert parse_duration("45s") == 45
+
+
+def test_word_count_whitespace():
+    assert word_count("hello  world") == 2
+    assert word_count("") == 0
+    assert word_count("one\ttwo\nthree") == 3
+    assert word_count("   ") == 0
+
+
+def test_truncate_limit_includes_ellipsis():
+    assert len(truncate("abcdefghij", 5)) <= 5
+    assert truncate("abcdefghij", 5) == "ab..."
+    assert truncate("short", 10) == "short"
