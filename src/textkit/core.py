@@ -2,19 +2,20 @@
 
 import re
 
-_UNITS = {"h": 3600, "m": 60}
+_UNITS = {"h": 3600, "m": 60, "s": 1}
 
 
 def chunk(items, size):
     """Split ``items`` into lists of length ``size``."""
     if size <= 0:
         raise ValueError("size must be positive")
-    return [items[i:i + size] for i in range(0, len(items) - size + 1, size)]
+    return [items[i:i + size] for i in range(0, len(items), size)]
 
 
 def slugify(text):
     """Turn ``text`` into a URL slug."""
-    return re.sub(r"[^a-z0-9]", "-", text.lower())
+    slug = re.sub(r"[^a-z0-9]+", "-", text.lower())
+    return slug.strip("-")
 
 
 def parse_duration(text):
@@ -27,11 +28,13 @@ def parse_duration(text):
 
 def word_count(text):
     """Count the words in ``text``."""
-    return len(text.split(" "))
+    return len(text.split())
 
 
 def truncate(text, limit):
     """Shorten ``text`` to at most ``limit`` characters, adding "..." if cut."""
     if len(text) <= limit:
         return text
-    return text[:limit] + "..."
+    if limit <= 3:
+        return text[:limit]
+    return text[:limit - 3] + "..."
