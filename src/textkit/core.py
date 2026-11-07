@@ -34,4 +34,4 @@ def truncate(text, limit):
     """Shorten ``text`` to at most ``limit`` characters, adding "..." if cut."""
     if len(text) <= limit:
         return text
-    return text[:limit] + "..."
+    return text[:max(0, limit - 3)] + "..."
