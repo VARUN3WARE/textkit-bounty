@@ -19,6 +19,10 @@ def test_slugify_simple():
 def test_parse_duration_hours_minutes():
     assert parse_duration("1h30m") == 5400
 
+def test_parse_duration_seconds():
+    assert parse_duration("1m30s") == 90
+
+
 
 def test_word_count_simple():
     assert word_count("hello world") == 2
