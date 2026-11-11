@@ -13,7 +13,7 @@ def test_chunk_rejects_zero():
 
 
 def test_slugify_simple():
-    assert slugify("hello") == "hello"
+    assert slugify("Hello, World!") == "hello-world"
 
 
 def test_parse_duration_hours_minutes():
