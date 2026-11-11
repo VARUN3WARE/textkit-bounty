@@ -27,7 +27,7 @@ def parse_duration(text):
 
 def word_count(text):
     """Count the words in ``text``."""
-    return len(text.split(" "))
+    return len(text.split())
 
 
 def truncate(text, limit):

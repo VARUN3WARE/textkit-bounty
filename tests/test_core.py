@@ -23,6 +23,11 @@ def test_parse_duration_hours_minutes():
 def test_word_count_simple():
     assert word_count("hello world") == 2
 
+def test_word_count_whitespace_edge_cases():
+    assert word_count("hello  world") == 2
+    assert word_count("one\ttwo\nthree") == 3
+    assert word_count("") == 0
+    assert word_count("   ") == 0
 
 def test_truncate_short_text_unchanged():
     assert truncate("short", 10) == "short"
